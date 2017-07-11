@@ -73,7 +73,8 @@ registrationModule.controller('cotizacionController', function($scope, $route, t
             alertFactory.error('No se puenen obtener las órdenes');
             $('#loadModal').modal('hide');
         });
-
+        //LQMA 11072017 add destruye tabla, se repetian datos
+        $('.dataTablePartidasTalleres').DataTable().destroy();
         // tallerRepository.getTalleres($scope.idUsuario, $scope.idContratoOperacion, $scope.zonaSelected, $scope.taller, $scope.idServicios.slice(0, -1)).then(function(result) {
         //     $scope.mostrarTabla = true;
         //     $scope.talleres = result.data;
@@ -116,8 +117,6 @@ registrationModule.controller('cotizacionController', function($scope, $route, t
 
     $scope.getOrdenDetalle = function() {
         consultaCitasRepository.getOrdenDetalle($scope.userData.idUsuario, $scope.numeroOrden).then(function(result) {
-            //LQMA 10072017
-            //console.log(result.data)
             if (result.data.length > 0) {
                 $scope.detalleOrden = result.data[0];
             }
@@ -147,18 +146,21 @@ registrationModule.controller('cotizacionController', function($scope, $route, t
     }
 
 
-
-
-
     $scope.getPartidasTaller = function(idTaller) {
         var partidas = [];
         $('#loadModal').modal('show');
         $scope.idTaller = idTaller;
-        $('.dataTablePartidasTalleres').DataTable().destroy();
+        //LQMA 110702017 se comento
+        //$('.dataTablePartidasTalleres').DataTable().destroy();
+        
         consultaCitasRepository.getPartidasTaller($scope.idTaller, $scope.especialidad, $scope.userData.contratoOperacionSeleccionada).then(function(result) {
             if (result.data.length > 0) {
-               partidas.push(result.data[0]);
+               //partidas.push(result.data[0]);
 
+               console.log('result.data'); 
+               console.log(result.data); 
+
+               /* LQMA 11072017, se comento
                 result.data.forEach(function(item) {
 
                     partidas.forEach(function(item2) {
@@ -168,7 +170,11 @@ registrationModule.controller('cotizacionController', function($scope, $route, t
                     });
                   
                 });
+
                 $scope.partidasTaller =partidas;
+                */
+                $scope.partidasTaller = result.data;    
+
                 //globalFactory.minMinDrawDocument("dataTablePartidasTalleres", "PartidasTalleres");
                 globalFactory.filtrosTabla("dataTablePartidasTalleres", "PartidasTalleres", 100);
             }
