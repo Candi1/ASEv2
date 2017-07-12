@@ -141,7 +141,7 @@
                                                     <th>Número de la Orden</th>
                                                     <th>Número Económico</th>
                                                     <th>Zona</th>
-                                                    <th>Taller</th>
+                                                    <!-- <th>Taller</th> HHM-->
                                                     <th>Tipo Orden</th>
                                                     <th>Marca</th>
                                                     <th>Modelo</th>
@@ -160,8 +160,10 @@
                                                     <td ng-click="detalleOrden(orden)">{{orden.idOrden}}</td>
                                                     <td ng-click="detalleOrden(orden)">{{orden.numeroOrden}}</td>
                                                     <td ng-click="detalleOrden(orden)">{{orden.numeroEconomico}}</td>
-                                                    <td ng-click="detalleOrden(orden)">{{orden.idZona}}</td>
-                                                    <td ng-click="detalleOrden(orden)">{{orden.nombreTaller}}</td>
+                                                    <!-- <td ng-click="detalleOrden(orden)">{{orden.idZona}}</td> HHM-->
+                                                    <td ng-click="detalleOrden(orden)">{{orden.nombreZona}}</td>
+                                                    
+                                                    <!-- <td ng-click="detalleOrden(orden)">{{orden.nombreTaller}}</td> HHM-->
                                                     <td ng-click="detalleOrden(orden)">{{orden.nombreTipoOrdenServicio}}</td>
                                                     <td ng-click="detalleOrden(orden)">{{orden.marcaUnidad}}</td>
                                                     <td ng-click="detalleOrden(orden)">{{orden.modeloUnidad}}</td>
@@ -221,7 +223,7 @@
                                                     <th>Número de la Orden</th>
                                                     <th>Número Económico</th>
                                                     <th>Zona</th>
-                                                    <th>Taller</th>
+                                                    <!-- <th>Taller</th> HHM-->
                                                     <th>Tipo Orden</th>
                                                     <th>Marca</th>
                                                     <th>Modelo</th>
@@ -241,8 +243,9 @@
                                                     <td>{{orden.idOrden}}</td>
                                                     <td>{{orden.numeroOrden}}</td>
                                                     <td>{{orden.numeroEconomico}}</td>
-                                                    <td>{{orden.idZona}}</td>
-                                                    <td>{{orden.nombreTaller}}</td>
+                                                    <!-- <td>{{orden.idZona}}</td> -->
+                                                    <td>{{orden.nombreZona}}</td>
+                                                    <!-- <td>{{orden.nombreTaller}}</td> HHM-->
                                                     <td>{{orden.nombreTipoOrdenServicio}}</td>
                                                     <td>{{orden.marcaUnidad}}</td>
                                                     <td>{{orden.modeloUnidad}}</td>
